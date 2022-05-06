@@ -1,5 +1,4 @@
 package client.accountplayer;
-import client.accountplayer.PlayAccount;
 import readandwritefile.ReadAndWriteAccountFile;
 
 import java.util.ArrayList;

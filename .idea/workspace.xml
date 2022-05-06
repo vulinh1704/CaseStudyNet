@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="50ea5278-e252-408f-a9f1-86692404bf4c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_play.csv" beforeDir="false" afterPath="$PROJECT_DIR$/account_play.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/accountplayer/PlayAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/accountplayer/PlayAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/readandwritefile/ReadAndWriteAccountFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/readandwritefile/ReadAndWriteAccountFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/HandlePlayerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/HandlePlayerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/accountplayer/PlayAccountManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/accountplayer/PlayAccountManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sever/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sever/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sever/menusever/HandleServerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sever/menusever/HandleServerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sever/menusever/SeverCheckAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sever/menusever/SeverCheckAccount.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +40,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.SeverCheckAccount">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sever.Main" />
       <module name="CaseStudyMd2" />
@@ -81,9 +82,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SeverCheckAccount" />
         <item itemvalue="Application.MainPlayer" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.SeverCheckAccount" />
       </list>
     </recent_temporary>
   </component>
@@ -95,7 +96,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1651714190219</updated>
-      <workItem from="1651714192220" duration="65566000" />
+      <workItem from="1651714192220" duration="69801000" />
     </task>
     <servers />
   </component>

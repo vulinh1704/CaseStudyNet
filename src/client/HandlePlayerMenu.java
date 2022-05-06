@@ -1,24 +1,31 @@
 package client;
 
 import client.accountplayer.PlayAccount;
+import food.Foot;
 import input.Input;
 import readandwritefile.ReadAndWriteAccountFile;
 import sever.menusever.HandleServerMenu;
 import sever.menusever.Menu;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.Socket;
 import java.util.List;
 
 public class HandlePlayerMenu {
-    public void connect() {
+    Socket socket;
+
+    {
         try {
-            Socket socket = new Socket("localhost", 2006);
-            handlePlayerLogin();
-            handlePlayerMenu();
+            socket = new Socket("localhost", 2006);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void connect() {
+        handlePlayerLogin();
+        handlePlayerMenu();
     }
 
     public void handlePlayerLogin() {
@@ -54,7 +61,11 @@ public class HandlePlayerMenu {
                 case 1:
                     break;
                 case 2:
-                    HandleServerMenu.oderFood();
+                    try {
+                        handleMenuOder();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 3:
 
@@ -66,5 +77,45 @@ public class HandlePlayerMenu {
                     System.out.println("Không có lựa chọn này vui lòng nhập lại!");
             }
         } while (choose != 0);
+    }
+
+    public void handleMenuOder() throws IOException {
+        List<Foot> readFromFileFood = ReadAndWriteAccountFile.readFromFileFood();
+        int amountNew = 1;
+        String product = "";
+        System.out.println("Nhập tên đồ ăn cần oder");
+        int amountRest = 0;
+        product = Input.inputText(product);
+        boolean checkProduct = true;
+        boolean checkAmount = true;
+        int index = 1;
+        for (Foot foot : readFromFileFood) {
+            if (foot.getProduct().equalsIgnoreCase(product.trim())) {
+                System.out.println("Nhập số lượng đồ ăn : ");
+                amountNew = Input.inputNumber(amountNew);
+                amountRest = foot.getAmount() - amountNew;
+                if (amountRest >= 0) {
+                    foot.setAmount(amountNew);
+                    for (int i = 0; i < readFromFileFood.size(); i++) {
+                        if (readFromFileFood.get(i).getProduct().equals(product)) {
+                            index = i;
+                        }
+                    }
+                    readFromFileFood.set(index, foot);
+                    System.out.println("Đã oder " + amountNew + " " + foot.getProduct());
+                    PrintStream ps = new PrintStream(socket.getOutputStream());
+                    ps.println("Máy chủ : Khách đã oder " + amountNew + " " + foot.getProduct());
+                    checkAmount = false;
+                }
+                checkProduct = false;
+            }
+        }
+        if (checkProduct) {
+            System.out.println("Không tìm thấy đồ ăn này!");
+        }
+        if (checkAmount) {
+            System.out.println("Không đủ số lượng thiếu : " + (-amountRest));
+        }
+        ReadAndWriteAccountFile.writeToFileFootNoAppend(readFromFileFood);
     }
 }

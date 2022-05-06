@@ -250,21 +250,6 @@ public class HandleServerMenu {
         return false;
     }
 
-    public void sever() {
-        ServerSocket sever = null;
-        try {
-            sever = new ServerSocket(2006);
-            handleAccountMenu();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            Socket socket = sever.accept();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void handleFoodManagement() {
         int choose = -1;
         do {
@@ -364,7 +349,7 @@ public class HandleServerMenu {
                 System.out.println("Nhập số lượng đồ ăn : ");
                 amountNew = Input.inputNumber(amountNew);
                 amountRest = foot.getAmount() - amountNew;
-                if (amountRest > 0) {
+                if (amountRest >= 0) {
                     foot.setAmount(amountNew);
                     for (int i = 0; i < readFromFileFood.size(); i++) {
                         if (readFromFileFood.get(i).getProduct().equals(product)) {
@@ -372,7 +357,7 @@ public class HandleServerMenu {
                         }
                     }
                     readFromFileFood.set(index, foot);
-                    System.out.println("Đã oder " + amountRest + " " + foot.getProduct());
+                    System.out.println("Đã oder " + amountNew + " " + foot.getProduct());
                     checkAmount = false;
                 }
                 checkProduct = false;

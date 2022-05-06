@@ -31,9 +31,9 @@ public class SeverCheckAccount {
                 System.out.println("Tên tài khoản cần check : " + userName);
                 PrintStream ps = new PrintStream(socket.getOutputStream());
                 if (checkUserNameFromClint(userName)) {
-                    ps.println("Máy chủ : Hãy nhập mật khẩu mới (ít nhất 1 chữ 1 số)!");
+                    ps.println("Máy chủ: Hãy nhập mật khẩu mới (ít nhất 1 chữ 1 số)!");
                 } else {
-                    ps.println("Máy chủ : Không tìm thấy tài khoản này!");
+                    ps.println("Máy chủ: Không tìm thấy tài khoản này!");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
