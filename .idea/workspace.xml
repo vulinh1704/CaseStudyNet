@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50ea5278-e252-408f-a9f1-86692404bf4c" name="Changes" comment="" />
+    <list default="true" id="50ea5278-e252-408f-a9f1-86692404bf4c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_play.csv" beforeDir="false" afterPath="$PROJECT_DIR$/account_play.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/accountplayer/PlayAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/accountplayer/PlayAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/readandwritefile/ReadAndWriteAccountFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/readandwritefile/ReadAndWriteAccountFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sever/menusever/HandleServerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sever/menusever/HandleServerMenu.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,10 +20,14 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="28izRhuVtH2FbMulNqPIUEeKCkr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -26,6 +36,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -84,7 +95,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1651714190219</updated>
-      <workItem from="1651714192220" duration="63633000" />
+      <workItem from="1651714192220" duration="65566000" />
     </task>
     <servers />
   </component>

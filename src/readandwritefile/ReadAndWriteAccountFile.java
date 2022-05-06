@@ -94,7 +94,7 @@ public class ReadAndWriteAccountFile {
             br = new BufferedReader(fr);
             while ((inf = br.readLine()) != null) {
                 String[] arr = inf.split(",");
-                accountList.add(new PlayAccount(arr[0], arr[1]));
+                accountList.add(new PlayAccount(arr[0], arr[1], Integer.parseInt(arr[2])));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -146,7 +146,7 @@ public class ReadAndWriteAccountFile {
             br = new BufferedReader(fr);
             while ((inf = br.readLine()) != null) {
                 String[] arr = inf.split(",");
-                footList.add(new Foot(arr[0],Integer.parseInt( arr[1])));
+                footList.add(new Foot(arr[0], Integer.parseInt(arr[1])));
             }
         } catch (IOException e) {
             e.printStackTrace();

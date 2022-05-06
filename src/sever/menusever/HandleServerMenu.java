@@ -210,6 +210,7 @@ public class HandleServerMenu {
     public void registrationAccPlay() {
         String userName = "";
         String passWord = "";
+        int moneyAccount = 0;
         do {
             System.out.println("---------- Đăng kí tài khoản chơi ----------");
             System.out.println("Nhập tên tài khoản (linh1704)");
@@ -228,8 +229,13 @@ public class HandleServerMenu {
                 System.err.println("Sai định dạng nhập lại !");
             }
         } while (!ValiDate.getValiDatePswPlay(passWord));
+        do {
+            System.out.println("Nạp tiền vào tài khoản");
+            moneyAccount = Input.inputNumber(moneyAccount);
+            if(moneyAccount <= 20000) System.err.println("Vui lòng nhập số tiền tối thiểu 20.000");
+        } while (moneyAccount <= 20000);
         System.out.println("Cấp tài khoản thành công !");
-        PlayAccount playAccount = new PlayAccount(userName, passWord);
+        PlayAccount playAccount = new PlayAccount(userName, passWord , moneyAccount);
         playAccountManagement.registerAnAccount(playAccount);
     }
 
@@ -254,8 +260,6 @@ public class HandleServerMenu {
         }
         try {
             Socket socket = sever.accept();
-            BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            System.out.println(br.readLine());
         } catch (IOException e) {
             e.printStackTrace();
         }
