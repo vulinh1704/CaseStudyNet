@@ -6,6 +6,7 @@ import food.FoodManagement;
 import food.Foot;
 import input.Input;
 import readandwritefile.ReadAndWriteAccountFile;
+import sever.Main;
 import sever.accountsever.AccountManagement;
 import sever.accountsever.MasterAccount;
 import validate.ValiDate;
@@ -18,7 +19,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
 
-public class HandleServerMenu {
+public class HandleServerMenu extends Thread{
     private final AccountManagement accountManagement = new AccountManagement();
     private final PlayAccountManagement playAccountManagement = new PlayAccountManagement();
     private final FoodManagement foodManagement = new FoodManagement();
@@ -198,6 +199,14 @@ public class HandleServerMenu {
                 case 3:
                     handleFoodManagement();
                     break;
+                case 4 :
+                    break;
+                case 5 :
+                    break;
+                case 6 :
+                    Main main = new Main();
+                    main.handleChat();
+                    break;
                 case 0:
                     handleAccountMenu();
                     break;
@@ -372,5 +381,9 @@ public class HandleServerMenu {
         ReadAndWriteAccountFile.writeToFileFootNoAppend(readFromFileFood);
     }
 
+    @Override
+    public void run() {
+        handleAccountMenu();
+    }
 }
 

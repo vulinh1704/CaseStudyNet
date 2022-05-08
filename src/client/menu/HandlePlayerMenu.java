@@ -7,7 +7,9 @@ import readandwritefile.ReadAndWriteAccountFile;
 import sever.menusever.HandleServerMenu;
 import sever.menusever.Menu;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.List;
@@ -21,6 +23,10 @@ public class HandlePlayerMenu extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Socket getSocket() {
+        return socket;
     }
 
     public void connect() {
@@ -68,7 +74,9 @@ public class HandlePlayerMenu extends Thread {
                     }
                     break;
                 case 3:
-
+                    break;
+                case 4:
+                    handleChat();
                     break;
                 case 0:
                     handlePlayerLogin();
@@ -104,7 +112,7 @@ public class HandlePlayerMenu extends Thread {
                     readFromFileFood.set(index, foot);
                     System.out.println("Đã oder " + amountNew + " " + foot.getProduct());
                     PrintStream ps = new PrintStream(socket.getOutputStream());
-                    ps.println("Máy chủ : Khách đã oder " + amountNew + " " + foot.getProduct());
+                    ps.println("Khách : Khách đã oder " + amountNew + " " + foot.getProduct());
                     checkAmount = false;
 
                 }
@@ -118,6 +126,19 @@ public class HandlePlayerMenu extends Thread {
             System.out.println("Không đủ số lượng thiếu : " + (-amountRest));
         }
         ReadAndWriteAccountFile.writeToFileFootNoAppend(readFromFileFood);
+    }
+
+    public void handleChat() {
+        PrintStream ps = null;
+        try {
+            ps = new PrintStream(socket.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String inbox = "";
+        System.out.println("Nhập tin nhắn : ");
+        inbox = Input.inputText(inbox);
+        ps.println("Khách : " + inbox);
     }
 
     @Override
