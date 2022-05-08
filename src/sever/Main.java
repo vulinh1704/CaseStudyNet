@@ -11,6 +11,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Main extends Thread {
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_RESET = "\u001B[0m";
     static ServerSocket sever;
 
     static {
@@ -55,7 +57,7 @@ public class Main extends Thread {
         System.out.println("Nhập tin nhắn : ");
         inbox = Input.inputText(inbox);
         assert ps != null;
-        ps.println("Chủ Quán : " + inbox);
+        ps.println( ANSI_PURPLE + "Chủ Quán : " + inbox + ANSI_RESET);
     }
 
     public static void main(String[] args) {

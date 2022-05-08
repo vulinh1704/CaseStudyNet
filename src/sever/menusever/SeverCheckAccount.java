@@ -28,7 +28,7 @@ public class SeverCheckAccount {
                 BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 String userName = "";
                 userName = br.readLine();
-                System.out.println("Tên tài khoản cần check : " + userName);
+                System.out.println("TÊN TÀI KHOẢN CẦN CHECK : " + userName);
                 PrintStream ps = new PrintStream(socket.getOutputStream());
                 if (checkUserNameFromClint(userName)) {
                     ps.println("Máy chủ: Hãy nhập mật khẩu mới (ít nhất 1 chữ 1 số)!");

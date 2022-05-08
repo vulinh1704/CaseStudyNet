@@ -15,11 +15,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
 
 public class HandleServerMenu extends Thread{
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_GREEN = "\u001B[32m";
     private final AccountManagement accountManagement = new AccountManagement();
     private final PlayAccountManagement playAccountManagement = new PlayAccountManagement();
     private final FoodManagement foodManagement = new FoodManagement();
@@ -43,7 +46,7 @@ public class HandleServerMenu extends Thread{
                     Menu.showStartMenu();
                     break;
                 default:
-                    System.out.println("Không có lựa chọn này vui lòng nhập lại!");
+                    System.out.println(ANSI_YELLOW + "Không có lựa chọn này vui lòng nhập lại!" + ANSI_RESET);
             }
         } while (choose != 0);
     }
@@ -52,8 +55,8 @@ public class HandleServerMenu extends Thread{
         String userName = "";
         String passWord = "";
         do {
-            System.out.println("---------- Đăng kí ----------");
-            System.out.println("Nhập tên tài khoản (linh1704@gmail.com)");
+            System.out.println("---------- ĐĂNG KÍ ----------");
+            System.out.println("NHẬP TÊN TÀI KHOẢN (linh1704@gmail.com)");
             userName = Input.inputText(userName);
             if (!ValiDate.getValiDateUsrSv(userName)) {
                 System.err.println("Sai định dạng nhập lại !");
@@ -64,13 +67,13 @@ public class HandleServerMenu extends Thread{
         } while (!ValiDate.getValiDateUsrSv(userName) || checkAccountExists(userName));
 
         do {
-            System.out.println("Nhập mật khẩu (ít nhất 1 chữ 1 số)");
+            System.out.println("NHẬP MẬT KHẨU (ít nhất 1 chữ 1 số)");
             passWord = Input.inputText(passWord);
             if (!ValiDate.getValiDatePswSv(passWord)) {
                 System.err.println("Sai định dạng nhập lại !");
             }
         } while (!ValiDate.getValiDatePswSv(passWord));
-        System.out.println("Đăng kí thành công !");
+        System.out.println(ANSI_GREEN + "Đăng kí thành công !" + ANSI_RESET);
         MasterAccount masterAccount = new MasterAccount(userName, passWord);
         accountManagement.registerAnAccount(masterAccount);
     }
@@ -91,14 +94,14 @@ public class HandleServerMenu extends Thread{
         String passWord = "";
         boolean checkLogin = true;
         do {
-            System.out.println("---------- Đăng nhập ----------");
-            System.out.println("Nhập tên tài khoản");
+            System.out.println("---------- ĐĂNG NHẬP ----------");
+            System.out.println("NHẬP TÊN TÀI KHOẢN");
             userName = Input.inputText(passWord);
-            System.out.println("Nhập mật khẩu");
+            System.out.println("NHẬP MẬT KHẨU");
             passWord = Input.inputText(passWord);
             for (MasterAccount account : accountList) {
                 if (account.getUserName().equals(userName) && account.getPassWord().equals(passWord)) {
-                    System.out.println("Đăng nhập thành công !");
+                    System.out.println(ANSI_GREEN + "Đăng nhập thành công !" + ANSI_RESET);
                     checkLogin = false;
                     break;
                 }
@@ -125,7 +128,7 @@ public class HandleServerMenu extends Thread{
                 case 0:
                     break;
                 default:
-                    System.out.println("Không có lựa chọn trong menu!");
+                    System.out.println(ANSI_YELLOW + "Không có lựa chọn trong menu!" + ANSI_RESET);
             }
 
         } while (choose != 0);
@@ -134,7 +137,7 @@ public class HandleServerMenu extends Thread{
     public void showAccount() {
         List<MasterAccount> accountList = ReadAndWriteAccountFile.readFromFileAccount();
         String userName = "";
-        System.out.println("Nhập tên tài khoản ");
+        System.out.println("NHẬP TÊN TÀI KHOẢN : ");
         userName = Input.inputText(userName);
         boolean checkAccount = true;
         for (MasterAccount account : accountList) {
@@ -145,7 +148,7 @@ public class HandleServerMenu extends Thread{
             }
         }
         if (checkAccount) {
-            System.out.println("Không tìm thấy tài khoản này!");
+            System.out.println(ANSI_YELLOW + "Không tìm thấy tài khoản này!" + ANSI_RESET);
         }
     }
 
@@ -154,7 +157,7 @@ public class HandleServerMenu extends Thread{
             Socket socket = new Socket("localhost", 1704);
             PrintStream ps = new PrintStream(socket.getOutputStream());
             String userName = "";
-            System.out.println("Nhập tên tài khoản cần đổi lên sever : ");
+            System.out.println("NHẬP TÊN TÀI KHOẢN CẦN ĐỔI LÊN SEVER : ");
             userName = Input.inputText(userName);
             ps.println(userName);
 
@@ -180,7 +183,7 @@ public class HandleServerMenu extends Thread{
             for (MasterAccount account : accountList) {
                 if (account.getUserName().equals(userName)) account.setPassWord(newPwd);
             }
-            System.out.println("Cập nhật mật khẩu thành công");
+            System.out.println(ANSI_GREEN + "Cập nhật mật khẩu thành công" + ANSI_RESET);
             ReadAndWriteAccountFile.writeToFileAccountNoAppend(accountList);
         }
     }
@@ -211,7 +214,7 @@ public class HandleServerMenu extends Thread{
                     handleAccountMenu();
                     break;
                 default:
-                    System.out.println("Không có lựa chọn này vui lòng nhập lại!");
+                    System.out.println(ANSI_YELLOW + "Không có lựa chọn này vui lòng nhập lại!" + ANSI_RESET);
             }
         } while (choose != 0);
     }
@@ -221,8 +224,8 @@ public class HandleServerMenu extends Thread{
         String passWord = "";
         int moneyAccount = 0;
         do {
-            System.out.println("---------- Đăng kí tài khoản chơi ----------");
-            System.out.println("Nhập tên tài khoản (linh1704)");
+            System.out.println("---------- ĐĂNG KÍ TÀI KHOẢN NGƯỜI CHƠI ----------");
+            System.out.println("NHẬP TÊN TÀI KHOẢN (linh1704)");
             userName = Input.inputText(userName);
             if (!ValiDate.getValiDateUsrPlay(userName)) {
                 System.err.println("Sai định dạng nhập lại !");
@@ -232,18 +235,18 @@ public class HandleServerMenu extends Thread{
             }
         } while (!ValiDate.getValiDateUsrPlay(userName) || checkAccountPlayExists(userName));
         do {
-            System.out.println("Nhập mật khẩu (ít nhất 1 số)");
+            System.out.println("NHẬP MẬT KHẨU (1)");
             passWord = Input.inputText(passWord);
             if (!ValiDate.getValiDatePswPlay(passWord)) {
                 System.err.println("Sai định dạng nhập lại !");
             }
         } while (!ValiDate.getValiDatePswPlay(passWord));
         do {
-            System.out.println("Nạp tiền vào tài khoản");
+            System.out.println("NẠP TIỀN VÀO TÀI KHOẢN");
             moneyAccount = Input.inputNumber(moneyAccount);
             if(moneyAccount <= 20000) System.err.println("Vui lòng nhập số tiền tối thiểu 20.000");
         } while (moneyAccount <= 20000);
-        System.out.println("Cấp tài khoản thành công !");
+        System.out.println(ANSI_GREEN + "Cấp tài khoản thành công !" + ANSI_RESET);
         PlayAccount playAccount = new PlayAccount(userName, passWord , moneyAccount);
         playAccountManagement.registerAnAccount(playAccount);
     }
@@ -281,7 +284,7 @@ public class HandleServerMenu extends Thread{
                     handleMainMenu();
                     break;
                 default:
-                    System.out.println("Không có lựa chọn này vui lòng nhập lại!");
+                    System.out.println(ANSI_YELLOW + "Không có lựa chọn này vui lòng nhập lại!" + ANSI_RESET);
             }
         } while (choose != 0);
     }
@@ -291,18 +294,18 @@ public class HandleServerMenu extends Thread{
         String product = "";
         int amount = 0;
         Foot foot = null;
-        System.out.println("Nhập tên đồ ăn");
+        System.out.println("NHẬP TÊN ĐỒ ĂN CẦN THÊM : ");
         product = Input.inputText(product);
-        System.out.println("Nhập số lượng ");
+        System.out.println("NHẬP SỐ LƯỢNG :  ");
         amount = Input.inputNumber(amount);
         boolean checkFoot = false;
         for (Foot f : readFromFileFood) {
-            if (f.getProduct().equals(product)) System.out.println("Đã có đồ ăn này !");
+            if (f.getProduct().equals(product)) System.out.println(ANSI_YELLOW + "Đã có đồ ăn này !" + ANSI_RESET);
             checkFoot = true;
         }
         if (checkFoot) {
             foot = new Foot(product, amount);
-            System.out.println("Đã thêm danh sách thành công !");
+            System.out.println(ANSI_GREEN + "Đã thêm danh sách thành công !" + ANSI_RESET);
             foodManagement.addFoot(foot);
         }
     }
@@ -310,21 +313,22 @@ public class HandleServerMenu extends Thread{
     public void showFood() {
         List<Foot> readFromFileFood = ReadAndWriteAccountFile.readFromFileFood();
         for (Foot foot : readFromFileFood) {
-            System.out.println("Tên món ăn : " + foot.getProduct() + " - Số lượng : " + foot.getAmount());
+            System.out.println("TÊN MÓN ĂN :  " + foot.getProduct() + " - SỐ LƯỢNG : " + foot.getAmount());
         }
+        System.out.println("\n");
     }
 
     public void editAmountFood() {
         List<Foot> readFromFileFood = ReadAndWriteAccountFile.readFromFileFood();
         int amountNew = 1;
         String product = "";
-        System.out.println("Nhập tên sản phẩm cần thêm");
+        System.out.println("NHẬP TÊN ĐỒ ĂN CẦN THÊM ");
         product = Input.inputText(product);
         boolean checkProduct = true;
         int index = 1;
         for (Foot foot : readFromFileFood) {
             if (foot.getProduct().equals(product)) {
-                System.out.println("Nhập số lượng mới cho đồ ăn : ");
+                System.out.println("NHẬP SỐ LƯỢNG MỚI CHO ĐỒ ĂN ");
                 amountNew = Input.inputNumber(amountNew);
                 foot.setAmount(amountNew);
                 for (int i = 0; i < readFromFileFood.size(); i++) {
@@ -333,12 +337,12 @@ public class HandleServerMenu extends Thread{
                     }
                 }
                 readFromFileFood.set(index, foot);
-                System.out.println("Đã thay đổi số lượng của " + foot.getProduct());
+                System.out.println(ANSI_GREEN + "Đã thay đổi số lượng của " + foot.getProduct() + ANSI_RESET);
                 checkProduct = false;
             }
         }
         if (checkProduct) {
-            System.out.println("Không tìm thấy đồ ăn này!");
+            System.out.println(ANSI_YELLOW + "Không tìm thấy đồ ăn này!" + ANSI_RESET);
         }
         ReadAndWriteAccountFile.writeToFileFootNoAppend(readFromFileFood);
     }
@@ -347,7 +351,7 @@ public class HandleServerMenu extends Thread{
         List<Foot> readFromFileFood = ReadAndWriteAccountFile.readFromFileFood();
         int amountNew = 1;
         String product = "";
-        System.out.println("Nhập tên đồ ăn cần oder");
+        System.out.println("NHẬP TÊN ĐỒ ĂN CẦN ODER : ");
         int amountRest = 0;
         product = Input.inputText(product);
         boolean checkProduct = true;
@@ -355,7 +359,7 @@ public class HandleServerMenu extends Thread{
         int index = 1;
         for (Foot foot : readFromFileFood) {
             if (foot.getProduct().equalsIgnoreCase(product.trim())) {
-                System.out.println("Nhập số lượng đồ ăn : ");
+                System.out.println("NHẬP SỐ LƯỢNG ĐỒ ĂN : ");
                 amountNew = Input.inputNumber(amountNew);
                 amountRest = foot.getAmount() - amountNew;
                 if (amountRest >= 0) {
@@ -366,17 +370,17 @@ public class HandleServerMenu extends Thread{
                         }
                     }
                     readFromFileFood.set(index, foot);
-                    System.out.println("Đã oder " + amountNew + " " + foot.getProduct());
+                    System.out.println(ANSI_CYAN + "Đã oder " + amountNew + " " + foot.getProduct() + " !" + ANSI_RESET);
                     checkAmount = false;
                 }
                 checkProduct = false;
             }
         }
         if (checkProduct) {
-            System.out.println("Không tìm thấy đồ ăn này!");
+            System.out.println(ANSI_YELLOW + "Không tìm thấy đồ ăn này!" + ANSI_RESET);
         }
         if (checkAmount) {
-            System.out.println("Không đủ số lượng thiếu : " + (-amountRest));
+            System.err.println("Không đủ số lượng thiếu : " + (-amountRest));
         }
         ReadAndWriteAccountFile.writeToFileFootNoAppend(readFromFileFood);
     }
