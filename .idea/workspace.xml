@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50ea5278-e252-408f-a9f1-86692404bf4c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/thread/ThreadMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/HandlePlayerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/HandlePlayerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/accountplayer/PlayAccountManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/accountplayer/PlayAccountManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foot.csv" beforeDir="false" afterPath="$PROJECT_DIR$/foot.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CaseStudyMd2/client/HandlePlayerMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CaseStudyMd2/client/MainPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CaseStudyMd2/client/MainPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CaseStudyMd2/sever/menusever/HandleServerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CaseStudyMd2/sever/menusever/HandleServerMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CaseStudyMd2/sever/menusever/SeverCheckAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CaseStudyMd2/sever/menusever/SeverCheckAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/HandlePlayerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/menu/HandlePlayerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/MainPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/MainPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sever/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sever/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sever/menusever/HandleServerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sever/menusever/HandleServerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sever/menusever/SeverCheckAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sever/menusever/SeverCheckAccount.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +28,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -40,7 +46,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="Application.SeverCheckAccount">
+  <component name="RunManager" selected="Application.MainPlayer">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sever.Main" />
       <module name="CaseStudyMd2" />
@@ -59,7 +65,7 @@
       <module name="CaseStudyMd2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="client.*" />
+          <option name="PATTERN" value="client.menu.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -82,9 +88,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SeverCheckAccount" />
         <item itemvalue="Application.MainPlayer" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.SeverCheckAccount" />
       </list>
     </recent_temporary>
   </component>
@@ -96,11 +102,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1651714190219</updated>
-      <workItem from="1651714192220" duration="69801000" />
+      <workItem from="1651714192220" duration="70207000" />
+      <workItem from="1651953798665" duration="1416000" />
+      <workItem from="1652004414470" duration="2327000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

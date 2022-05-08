@@ -1,10 +1,10 @@
 package client;
 
-import sever.menusever.HandleServerMenu;
+import client.menu.HandlePlayerMenu;
 
 public class MainPlayer {
     public static void main(String[] args) {
         HandlePlayerMenu handlePlayerMenu = new HandlePlayerMenu();
-        handlePlayerMenu.connect();
+        handlePlayerMenu.start();
     }
 }

@@ -350,7 +350,7 @@ public class HandleServerMenu {
                 amountNew = Input.inputNumber(amountNew);
                 amountRest = foot.getAmount() - amountNew;
                 if (amountRest >= 0) {
-                    foot.setAmount(amountNew);
+                    foot.setAmount(amountRest);
                     for (int i = 0; i < readFromFileFood.size(); i++) {
                         if (readFromFileFood.get(i).getProduct().equals(product)) {
                             index = i;
@@ -371,5 +371,6 @@ public class HandleServerMenu {
         }
         ReadAndWriteAccountFile.writeToFileFootNoAppend(readFromFileFood);
     }
+
 }
 

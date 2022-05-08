@@ -1,4 +1,4 @@
-package client;
+package client.menu;
 
 import client.accountplayer.PlayAccount;
 import food.Foot;
@@ -12,7 +12,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.List;
 
-public class HandlePlayerMenu {
+public class HandlePlayerMenu extends Thread {
     Socket socket;
 
     {
@@ -95,7 +95,7 @@ public class HandlePlayerMenu {
                 amountNew = Input.inputNumber(amountNew);
                 amountRest = foot.getAmount() - amountNew;
                 if (amountRest >= 0) {
-                    foot.setAmount(amountNew);
+                    foot.setAmount(amountRest);
                     for (int i = 0; i < readFromFileFood.size(); i++) {
                         if (readFromFileFood.get(i).getProduct().equals(product)) {
                             index = i;
@@ -106,6 +106,7 @@ public class HandlePlayerMenu {
                     PrintStream ps = new PrintStream(socket.getOutputStream());
                     ps.println("Máy chủ : Khách đã oder " + amountNew + " " + foot.getProduct());
                     checkAmount = false;
+
                 }
                 checkProduct = false;
             }
@@ -117,5 +118,10 @@ public class HandlePlayerMenu {
             System.out.println("Không đủ số lượng thiếu : " + (-amountRest));
         }
         ReadAndWriteAccountFile.writeToFileFootNoAppend(readFromFileFood);
+    }
+
+    @Override
+    public void run() {
+        connect();
     }
 }
