@@ -54,7 +54,7 @@ public class Main extends Thread {
             e.printStackTrace();
         }
         String inbox = "";
-        System.out.println("Nhập tin nhắn : ");
+        System.out.println("NHẬP TIN NHẮN : ");
         inbox = Input.inputText(inbox);
         assert ps != null;
         ps.println( ANSI_PURPLE + "Chủ Quán : " + inbox + ANSI_RESET);

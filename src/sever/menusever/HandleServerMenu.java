@@ -18,7 +18,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.List;
 
-public class HandleServerMenu extends Thread{
+public class HandleServerMenu extends Thread {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_YELLOW = "\u001B[33m";
@@ -198,15 +198,15 @@ public class HandleServerMenu extends Thread{
                     registrationAccPlay();
                     break;
                 case 2:
+                    topUpAccount();
                     break;
                 case 3:
                     handleFoodManagement();
                     break;
-                case 4 :
+                case 4:
+                    disPlayAccounts();
                     break;
-                case 5 :
-                    break;
-                case 6 :
+                case 5:
                     Main main = new Main();
                     main.handleChat();
                     break;
@@ -244,10 +244,10 @@ public class HandleServerMenu extends Thread{
         do {
             System.out.println("NẠP TIỀN VÀO TÀI KHOẢN");
             moneyAccount = Input.inputNumber(moneyAccount);
-            if(moneyAccount <= 20000) System.err.println("Vui lòng nhập số tiền tối thiểu 20.000");
+            if (moneyAccount <= 20000) System.err.println("Vui lòng nhập số tiền tối thiểu 20.000");
         } while (moneyAccount <= 20000);
         System.out.println(ANSI_GREEN + "Cấp tài khoản thành công !" + ANSI_RESET);
-        PlayAccount playAccount = new PlayAccount(userName, passWord , moneyAccount);
+        PlayAccount playAccount = new PlayAccount(userName, passWord, moneyAccount);
         playAccountManagement.registerAnAccount(playAccount);
     }
 
@@ -383,6 +383,46 @@ public class HandleServerMenu extends Thread{
             System.err.println("Không đủ số lượng thiếu : " + (-amountRest));
         }
         ReadAndWriteAccountFile.writeToFileFootNoAppend(readFromFileFood);
+    }
+
+    public void disPlayAccounts() {
+        List<PlayAccount> playAccounts = ReadAndWriteAccountFile.readFromFileAccountPlay();
+        String playAcc = "";
+        System.out.println("NHẬP TÊN TÀI KHOẢN KHÁCH");
+        playAcc = Input.inputText(playAcc);
+        boolean checkPlayAcc = true;
+        for (PlayAccount p : playAccounts) {
+            if (playAcc.equals(p.getUserName())) {
+                System.out.println("TÀI KHOẢN : " + p.getUserName() + " , MẬT KHẨU : " + p.getPassWord() + " , SỐ TIỀN : " + p.moneyAccount);
+                checkPlayAcc = false;
+            }
+        }
+        if (checkPlayAcc) System.out.println(ANSI_YELLOW + " Không tìm thấy tài khoản này" + ANSI_RESET);
+    }
+
+    public void topUpAccount() {
+        List<PlayAccount> playAccounts = ReadAndWriteAccountFile.readFromFileAccountPlay();
+        String playAcc = "";
+        int money = 0;
+        System.out.println("NHẬP TÊN TÀI KHOẢN KHÁCH");
+        playAcc = Input.inputText(playAcc);
+        int moneyLeftOver = 0;
+        boolean checkPlayAcc = true;
+        boolean checkUp = false;
+        for (int i = 0; i < playAccounts.size(); i++) {
+            if (playAcc.equals(playAccounts.get(i).getUserName())) {
+                System.out.println("NHẬP SỐ TIỀN CẦN NẠP : ");
+                money = Input.inputNumber(money);
+                moneyLeftOver = playAccounts.get(i).moneyAccount;
+                playAccounts.get(i).setMoneyAccount(money + moneyLeftOver);
+                playAccounts.set(i, playAccounts.get(i));
+                checkPlayAcc = false;
+                checkUp = true;
+            }
+        }
+        if (checkUp) System.out.println(ANSI_GREEN + "Nạp tiền thành công !" + ANSI_RESET);
+        if (checkPlayAcc) System.out.println(ANSI_YELLOW + " Không tìm thấy tài khoản này !" + ANSI_RESET);
+        ReadAndWriteAccountFile.writeToFileAccountPlayNoAppend(playAccounts);
     }
 
     @Override

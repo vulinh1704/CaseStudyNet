@@ -4,12 +4,16 @@ import client.accountplayer.PlayAccount;
 import food.Foot;
 import input.Input;
 import readandwritefile.ReadAndWriteAccountFile;;
+import sever.menusever.HandleServerMenu;
 import sever.menusever.Menu;
 
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class HandlePlayerMenu extends Thread {
     public static final String ANSI_PURPLE = "\u001B[35m";
@@ -32,14 +36,15 @@ public class HandlePlayerMenu extends Thread {
     }
 
     public void connect() {
-        handlePlayerLogin();
+        deductFromAccount(handlePlayerLogin());
         handlePlayerMenu();
     }
 
-    public void handlePlayerLogin() {
+    public int handlePlayerLogin() {
         List<PlayAccount> accountList = ReadAndWriteAccountFile.readFromFileAccountPlay();
         String userName = "";
         String passWord = "";
+        int index = -1;
         boolean checkLogin = true;
         do {
             System.out.println("---------- ĐĂNG NHẬP MÁY ----------");
@@ -54,10 +59,18 @@ public class HandlePlayerMenu extends Thread {
                     break;
                 }
             }
+            for (int i = 0; i < accountList.size(); i++) {
+                if (accountList.get(i).getUserName().equals(userName) && accountList.get(i).getPassWord().equals(passWord)){
+                   index = i;
+                   break;
+                }
+            }
             if (checkLogin) {
                 System.err.println("Sai tài khoản hoặc mật khẩu !");
             }
+
         } while (checkLogin);
+        return index;
     }
 
     public void handlePlayerMenu() {
@@ -76,10 +89,11 @@ public class HandlePlayerMenu extends Thread {
                     }
                     break;
                 case 3:
-                    break;
-                case 4:
                     handleChat();
                     break;
+                case 4 :
+                    HandleServerMenu handleServerMenu = new HandleServerMenu();
+                    handleServerMenu.showFood();
                 case 0:
                     handlePlayerLogin();
                     break;
@@ -146,5 +160,37 @@ public class HandlePlayerMenu extends Thread {
     @Override
     public void run() {
         connect();
+    }
+
+    public void deductFromAccount(int index) {
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                List<PlayAccount> playAccounts = ReadAndWriteAccountFile.readFromFileAccountPlay();
+                int money = 0;
+                for (int i = 0; i < playAccounts.size(); i++) {
+                    if (i == index) {
+                        money = playAccounts.get(index).getMoneyAccount();
+                        break;
+                    }
+                }
+                if (money > 0) {
+                    money = money - 5000;
+                    for (int i = 0; i < playAccounts.size(); i++) {
+                        if (i == index) {
+                            playAccounts.get(i).setMoneyAccount(money);
+                            playAccounts.set(i , playAccounts.get(i));
+                            ReadAndWriteAccountFile.writeToFileAccountPlayNoAppend(playAccounts);
+                        }
+                    }
+                } else {
+                    System.out.println(ANSI_YELLOW + "Đã hết tiền vui lòng nạp thêm !" + ANSI_RESET);
+                    connect();
+                }
+            }
+        };
+        Calendar data = Calendar.getInstance();
+        timer.schedule(task, data.getTime(), 20000);
     }
 }

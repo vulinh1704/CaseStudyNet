@@ -21,9 +21,8 @@ public class Menu {
                 "1.ĐĂNG KÍ TÀI KHOẢN CHO KHÁCH\n" +
                 "2.NẠP TÀI KHOẢN CHO KHÁCH\n" +
                 "3.QUẢN LÝ ĐỒ ĂN\n" +
-                "4.TÍNH TIỀN\n" +
-                "5.XEM TÀI KHOẢN KHÁCH\n" +
-                "6.CHAT\n" +
+                "4.XEM TÀI KHOẢN KHÁCH\n" +
+                "5.CHAT\n" +
                 "0.ĐĂNG XUẤT");
     }
 
@@ -41,8 +40,8 @@ public class Menu {
         System.out.println("---------- MENU MÁY CHƠI ----------\n" +
                 "1.XEM SỐ TIỀN TRONG TÀI KHOẢN\n" +
                 "2.ODER ĐỒ ĂN\n" +
-                "3.NẠP TÀI KHOẢN\n" +
-                "4.CHAT\n" +
+                "3.CHAT\n" +
+                "4.MENU ĐỒ ĂN\n" +
                 "0.ĐĂNG XUẤT");
     }
 }

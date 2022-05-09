@@ -84,6 +84,23 @@ public class ReadAndWriteAccountFile {
         }
     }
 
+    public static void writeToFileAccountPlayNoAppend(List<PlayAccount> list) {
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        try {
+            String str = "";
+            fw = new FileWriter(PATH_ACCOUNT_PLAY);
+            bw = new BufferedWriter(fw);
+            for (PlayAccount account : list) {
+                str += account + "\n";
+            }
+            bw.write(str);
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static List<PlayAccount> readFromFileAccountPlay() {
         List<PlayAccount> accountList = new ArrayList<>();
         FileReader fr = null;
