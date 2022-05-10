@@ -4,18 +4,6 @@
     <list default="true" id="50ea5278-e252-408f-a9f1-86692404bf4c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account_play.csv" beforeDir="false" afterPath="$PROJECT_DIR$/account_play.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CaseStudyMd2/client/menu/HandlePlayerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CaseStudyMd2/client/menu/HandlePlayerMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CaseStudyMd2/money/Money.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CaseStudyMd2/money/Money.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CaseStudyMd2/readandwritefile/ReadAndWriteAccountFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CaseStudyMd2/readandwritefile/ReadAndWriteAccountFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CaseStudyMd2/sever/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CaseStudyMd2/sever/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CaseStudyMd2/sever/menusever/HandleServerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CaseStudyMd2/sever/menusever/HandleServerMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CaseStudyMd2/sever/menusever/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CaseStudyMd2/sever/menusever/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/menu/HandlePlayerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/menu/HandlePlayerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/money/Money.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/money/Money.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/readandwritefile/ReadAndWriteAccountFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/readandwritefile/ReadAndWriteAccountFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sever/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sever/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sever/menusever/HandleServerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sever/menusever/HandleServerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sever/menusever/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sever/menusever/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +125,9 @@
       <workItem from="1651714192220" duration="70207000" />
       <workItem from="1651953798665" duration="1416000" />
       <workItem from="1652004414470" duration="12371000" />
-      <workItem from="1652058743951" duration="16199000" />
+      <workItem from="1652058743951" duration="16287000" />
+      <workItem from="1652144663734" duration="1348000" />
+      <workItem from="1652148470680" duration="988000" />
     </task>
     <servers />
   </component>
