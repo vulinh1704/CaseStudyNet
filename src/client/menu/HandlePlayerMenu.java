@@ -10,10 +10,7 @@ import sever.menusever.Menu;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class HandlePlayerMenu extends Thread {
     public static final String ANSI_PURPLE = "\u001B[35m";
@@ -80,6 +77,7 @@ public class HandlePlayerMenu extends Thread {
             choose = Input.inputNumber(choose);
             switch (choose) {
                 case 1:
+                    disPlayAccounts();
                     break;
                 case 2:
                     try {
@@ -92,8 +90,8 @@ public class HandlePlayerMenu extends Thread {
                     handleChat();
                     break;
                 case 4 :
-                    HandleServerMenu handleServerMenu = new HandleServerMenu();
-                    handleServerMenu.showFood();
+                    showFood();
+                    break;
                 case 0:
                     handlePlayerLogin();
                     break;
@@ -126,9 +124,9 @@ public class HandlePlayerMenu extends Thread {
                         }
                     }
                     readFromFileFood.set(index, foot);
-                    System.out.println(ANSI_CYAN + "Đã oder " + amountNew + " " + foot.getProduct());
+                    System.out.println(ANSI_CYAN + "Đã oder " + amountNew + " " + foot.getProduct() + ANSI_RESET);
                     PrintStream ps = new PrintStream(socket.getOutputStream());
-                    ps.println(ANSI_CYAN + "Khách : Khách đã oder " + amountNew + " " + foot.getProduct());
+                    ps.println(ANSI_CYAN + "Khách : Khách đã oder " + amountNew + " " + foot.getProduct() + ANSI_RESET);
                     checkAmount = false;
 
                 }
@@ -164,7 +162,7 @@ public class HandlePlayerMenu extends Thread {
 
     public void deductFromAccount(int index) {
         Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
+        TimerTask task = new TimerTask()  {
             @Override
             public void run() {
                 List<PlayAccount> playAccounts = ReadAndWriteAccountFile.readFromFileAccountPlay();
@@ -192,5 +190,28 @@ public class HandlePlayerMenu extends Thread {
         };
         Calendar data = Calendar.getInstance();
         timer.schedule(task, data.getTime(), 20000);
+    }
+
+    public void showFood() {
+        List<Foot> readFromFileFood = ReadAndWriteAccountFile.readFromFileFood();
+        for (Foot foot : readFromFileFood) {
+            System.out.println("TÊN MÓN ĂN :  " + foot.getProduct() + " - SỐ LƯỢNG : " + foot.getAmount());
+        }
+        System.out.println("\n");
+    }
+
+    public void disPlayAccounts() {
+        List<PlayAccount> playAccounts = ReadAndWriteAccountFile.readFromFileAccountPlay();
+        String playAcc = "";
+        System.out.println("NHẬP TÊN TÀI KHOẢN CỦA BẠN");
+        playAcc = Input.inputText(playAcc);
+        boolean checkPlayAcc = true;
+        for (PlayAccount p : playAccounts) {
+            if (playAcc.equals(p.getUserName())) {
+                System.out.println("TÀI KHOẢN : " + p.getUserName() + " , MẬT KHẨU : " + p.getPassWord() + " , SỐ TIỀN : " + p.moneyAccount);
+                checkPlayAcc = false;
+            }
+        }
+        if (checkPlayAcc) System.out.println(ANSI_YELLOW + " Không tìm thấy tài khoản này" + ANSI_RESET);
     }
 }

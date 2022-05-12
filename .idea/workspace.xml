@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="50ea5278-e252-408f-a9f1-86692404bf4c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account.csv" beforeDir="false" afterPath="$PROJECT_DIR$/account.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_play.csv" beforeDir="false" afterPath="$PROJECT_DIR$/account_play.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foot.csv" beforeDir="false" afterPath="$PROJECT_DIR$/foot.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/menu/HandlePlayerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/menu/HandlePlayerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,10 +38,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="Application.Money">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Linh\IdeaProjects\CaseStudyMd2" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.SeverCheckAccount">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sever.Main" />
       <module name="CaseStudyMd2" />
@@ -107,9 +117,9 @@
       <list>
         <item itemvalue="Application.MainPlayer" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.SeverCheckAccount" />
         <item itemvalue="Application.Money" />
         <item itemvalue="Application.SchedulingUsingTimerTask" />
-        <item itemvalue="Application.SeverCheckAccount" />
       </list>
     </recent_temporary>
   </component>
@@ -126,7 +136,9 @@
       <workItem from="1652004414470" duration="12371000" />
       <workItem from="1652058743951" duration="16287000" />
       <workItem from="1652144663734" duration="1348000" />
-      <workItem from="1652148470680" duration="6641000" />
+      <workItem from="1652148470680" duration="9801000" />
+      <workItem from="1652175665216" duration="27000" />
+      <workItem from="1652318381796" duration="2406000" />
     </task>
     <servers />
   </component>
